@@ -1,0 +1,19 @@
+---
+
+- name: Create Sudo Admin User
+  user: name=admin password={{admin_password}} groups=sudo append=yes shell=/bin/bash
+
+
+- name: Add sudo admin authorized keys
+  authorized_keys: user=admin 
+                   key="{{ common_public_key }}" 
+                   state=present
+
+
+- name: Create Deploy User
+  user: name=deploy password={{deploy_password}} groups=www-data append=yes shell=/bin/bash
+
+- name: Add Authorized Keys 
+  authorized_keys: user=deploy
+                   key="{{ common_public_key }}"
+                   state=present
