@@ -2,8 +2,8 @@
 # This playbook create SSH users
 
 - name: Create SSH users
-  hosts: all
-  remote_user: ec2-user
+  hosts: webserver
+  remote_user: root
 
 
   roles:
